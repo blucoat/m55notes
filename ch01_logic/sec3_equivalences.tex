@@ -1,0 +1,78 @@
+% -*- mode: latex; TeX-master: "ch1_logic_main.tex" -*-
+\section{Propositional Equivalences}
+\subsection{Truth assignments}
+For the rest of today, we will step away from specific propositions
+like ``if it is a holiday, then there is no class,'' and instead use
+abstract variables, as in ``$p \limplies \lnot q$.''  We will focus on
+how the truth value of compound statements like $p \limplies \lnot q$
+depends on the truth values of $p$ and $q$.
+
+\begin{table} \centering
+  \label{tab:pimpnq}
+  \begin{tabular}{| c | c | c | c |}
+    \hline
+    $p$ & $q$ & $p \limplies \lnot q$ & $q \limplies \lnot p$ \\ \hline
+    T & T & F & F \\ \hline
+    T & F & T & T \\ \hline
+    F & T & T & T \\ \hline
+    F & F & T & T\\ \hline
+  \end{tabular}
+  \caption{Truth table for $p \limplies \lnot q$ and $q \limplies \lnot p$}
+\end{table}
+
+\begin{defn}
+  Given a list of propositional variables, a \emph{truth assignment}
+  is a choice of ``true'' or ``false'' for each variable.
+\end{defn}
+In other words, a truth assignment picks out a single row in a truth
+table.  For example, the assignment ``$p$ is false and $q$ is true,''
+picks out the third row in Table~\ref{tab:pimpnq}.
+
+Some propositions, like $p \lor \lnot p$, are true no matter what the
+value of $p$ is.  Similarly, $p \land \lnot p$ is always false.  There
+are special names for these situations:
+
+\begin{defn}
+  If a compound proposition is true for all possible truth
+  assignments, it is called a \emph{tautology}.  If it is false for
+  all truth assignments, it is a \emph{contradiction}.  If it is
+  neither a tautology nor a contradiction, it is a \emph{contingency}.
+\end{defn}
+
+\subsection{Equivalence}
+From Table~\ref{tab:pimpnq} we see that $p \limplies \lnot q$ and $q
+\limplies \lnot p$ have the same truth table.  We would like to say
+that these two propositions are ``essentially the same.''
+
+\begin{defn}
+  Two compound propositions $\alpha$ and $\beta$ are \emph{logically
+    equivalent} if they have the same value for all truth
+  assignments.  In this case write $\alpha \equiv \beta$.
+\end{defn}
+
+\begin{exr}
+  Let $\alpha$ and $\beta$ be compound propositions.  Show $\alpha
+  \equiv \beta$ if and only if $\alpha \liff \beta$ is a tautology.
+\end{exr}
+
+\begin{danger}
+  The symbol $\equiv$ is \emph{not} a logical connective like $\land,
+  \lor, \limplies$, and friends.  Similarly,
+  $p \limplies \lnot q \equiv q \limplies \lnot p$ is not a compound
+  proposition.  It is the ``meta-statement'' that
+  $p \limplies \lnot q$ and $q \limplies \lnot p$ are equivalent
+  propositions.  Some insight into why this must be: it would be
+  nonsense to try to make a truth table for
+  $p \limplies \lnot q \equiv q \limplies \lnot p$.
+\end{danger}
+
+\subsection{Satisfiablity}
+\begin{defn}
+  A compound proposition $\alpha$ is called \emph{satisfiable} if
+  there exists a truth assignment for which $\alpha$ is true.  In
+  other words, $\alpha$ is not a contradiction.
+\end{defn}
+
+Many concrete problems can be reduced to asking if some compound
+proposition is satisfiable, and if it is, finding a satisfying
+assignment.
