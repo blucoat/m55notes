@@ -1,13 +1,21 @@
 % Put custom notation here
 \usepackage{amsthm}
+\usepackage{amsmath}
 \usepackage{manfnt}
 \newcommand*{\limplies}{\rightarrow}
 \newcommand*{\liff}{\leftrightarrow}
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}
-\newtheorem{exr}{Exercise}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{example}{Example}[section]
 
 \newenvironment{danger}{\medbreak\noindent\hangindent=2pc\hangafter=-2%
   \clubpenalty=10000%
   \hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}%
-  {\medbreak\par}
+{\medbreak\par}
+
+\usepackage{color,colortbl}
+\definecolor{Gray}{gray}{0.9}
+\newcolumntype{g}{>{\columncolor{Gray}}c}
+
+\newcommand*{\newterm}[1]{{\bfseries #1}}

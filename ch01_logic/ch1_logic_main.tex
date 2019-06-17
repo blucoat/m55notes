@@ -1,10 +1,19 @@
 \documentclass[letterpaper,12pt,DIV=calc]{scrartcl}
 \usepackage{mathpazo}
+\usepackage{enumitem}
+\usepackage{hyperref}
 \usepackage{../m55notation}
+\setenumerate{nosep}
+\setitemize{nosep}
+\setdescription{nosep}
+\let\oldlabel\descriptionlabel
+\renewcommand*\descriptionlabel[1]{\oldlabel{#1:}}
 \title{Math N55 Notes on Logic}
 \author{James Hagborg, Tristan Hull}
 \addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
 \begin{document}
 \maketitle
+\input{sec1_prop_logic}
 \input{sec3_equivalences}
 \end{document}
