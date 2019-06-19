@@ -1,0 +1,173 @@
+% -*- mode: latex; TeX-master: "ch1_logic_main.tex"; fill-column: 75 -*-
+\section{Predicates and Quantifiers}
+
+The theory of Propositional Logic that we have developed so far, while useful, 
+is not powerful enough to express many of the many of the statements we can 
+make in mathematics and in the English language. For example, assuming the 
+proposition ``Every university has a math department'' is true, we should 
+be able to conclude that ``Berkeley has a math department'' is also true. 
+However, we can't conclude this from propositional logic alone. 
+To address this gap, we introduce \textbf{Predicate Logic}, which allows us 
+to better reason about propositions which make assertions about sets of 
+objects (like the above proposition made an assertion about the set of all 
+universities).
+
+\subsection{Predicates}
+
+Consider the statement $x=y+3$. On its own, this statement isn't a proposition 
+- we can't say whether it is true or false because we don't know the values 
+of $x$ and $y$. However, if we also specify that $x=1$ and $y=2$, the 
+statement becomes a proposition. This is an example of a \textbf{predicate}.
+
+\begin{defn}
+  A \textbf{predicate} is a statement which becomes a proposition when the values 
+  of one or more variables are specified. These variables are called the 
+  \textbf{subjects} of the predicate.
+\end{defn}
+
+\example Consider the following predicates:
+\begin{enumerate}
+  \item $x>3$
+  \item $x=y+3$
+  \item $x^2\geq 0$
+\end{enumerate}
+
+We use the capital letters $P,Q,R,\dots$ to specify predicates. For example, 
+we could denote the predicate $x>3$ as $P(x)$ - the $x$ in parentheses is 
+present to indicate that the predicate $P$ depends on the value of $x$. 
+Given a specific value of $x$ - say $x=2$, the predicate becomes a proposition 
+- for instance, $P(2)$ is the proposition $2>3$, which is false. 
+$P(2)\equiv 2>3$ is also said to be the value of the 
+\textbf{propositional function} $P$ at $x=2$.
+
+\example Let $Q(x,y)$ be the predicate $x=y+3$. 
+  Determine the truth values of $Q(1,2)$ and $Q(3,0)$.
+
+\subsection{Quantifiers}
+
+Given a predicate $P$, we saw above that by specifying a value of $x$, 
+we get a proposition. There is another important way that we can obtain 
+a proposition from a predicate, and that is via quantifiers. 
+These quantifiers allow us to form propositions like: 
+``$x^2\geq 0$ for any integer $x$'' or 
+``There is a real number $x$ such that $x^2=2$''.
+
+To introduce these quantifiers, we first have to discuss the 
+\textbf{domain} of a predicate $P$. The domain the set of 
+possible values for $x$ that we are considering. 
+For instance, the domain of the predicate $x>3$ could be the set of real numbers.
+
+\begin{defn}
+The \textbf{universal quantification} of $P(x)$ is the statement: 
+``$P(x)$ is true for all values of $x$ in the domain''. 
+We can write this proposition more concisely as: 
+$\forall x\:P(x)$ where $\forall$ is the \textbf{universal quantifier} and reads as `for all'.
+\end{defn}
+
+\example Let $P(x)$ be $x+1>x$. What is the truth value of 
+  $\forall x\:P(x)$ where the domain consists of the real numbers?
+
+\example Write the statement 
+  ``Every computer in the computer lab is running Windows 10'' 
+  as the universal quantification of a predicate. Specify the predicate and the domain.
+
+\begin{defn}
+  The statement $\forall x\:P(x)$ is false if and only if 
+  we can find a value for $x$ in the domain such that $P(x)$ is false. 
+  Such a value is called a \textbf{counterexample}.
+\end{defn}
+
+\example Let $Q(x)$ be the predicate ``$x<2$''. What is the truth value of $\forall x\:Q(x)$?
+
+To show that a universal quantification $\forall x\:P(x)$ is false, 
+we have to show that there exists a counterexample. 
+This leads us to the existential quantifier:
+
+\begin{defn}
+  The \textbf{existential quantification} of $P(x)$ is the statement 
+  ``There exists an element $x$ in the domain such that $P(x)$ is true''. 
+  We can write this more concisely as $\exists x\:P(x)$ where $\exists$ reads as `there exists'.
+\end{defn}
+
+\example What is the truth value of $\exists x\:x>3$ where the domain is the set of real numbers?
+
+There is a variant of the existential quantifier called the \textbf{uniqueness} 
+quantifier which is denoted by $\exists !$. The statement 
+$\exists !x\:P(x)$ expresses the proposition ``There is exactly $x$ such that $P(x)$ is true''.
+
+\subsection{Working with Quantifiers}
+
+Suppose you have a predicate $P$ with domain $\{1,2,3,4\}$ ($x$ can only take on the values $1,2,3,4$). 
+Then the statement $\forall x\:P(x)$ amounts to saying $P(1),P(2),P(3)$, 
+and $P(4)$ are all true - that is $P(1)\wedge P(2)\wedge P(3)\wedge P(4)$ is true. 
+Thus $\forall x\:P(x)\equiv P(1)\wedge P(2)\wedge P(3)\wedge P(4)$. 
+Similarly, the statement $\exists x\:P(x)$ amounts to saying that at least one of 
+$P(1),P(2),P(3),P(4)$ is true, so $\exists x\:P(x)\equiv P(1)\vee P(2)\vee P(3)\vee P(4)$.
+
+This line of reasoning extends to any finite domain. 
+If the domain of the predicate $Q$ is a finite set, 
+its elements can be listed as $x_1,x_2,\dots,x_n$, 
+and then as above, $\forall x\:Q(x)\equiv Q(x_1)\wedge\dots\wedge Q(x_n)$ 
+and $\exists x\:Q(x)\equiv Q(x_1)\vee\dots\vee Q(x_n)$.
+
+$\newline$
+Consider the predicate $x^2>0$ with domain the real numbers. 
+If we want to express the proposition 
+``$P(x)$ is true for every negative real number $x$'', 
+we don't need to redefine the domain, we can simply write: 
+``$\forall x<0\:(x^2>0)$''. 
+In this way, we can restrict the part of the domain on which the quantifier applies.
+
+\example What do the statements $\forall y\neq 0\:(y^3\neq 0)$ 
+  and $\exists z>0\:(z^2=2)$ mean when the domain of each predicate is the real numbers?
+
+\example (\textbf{Order of Operations}) 
+  The quantifiers $\forall$ and $\exists$ take precedence 
+  over all the logical operators from propositional calculus. 
+  For instance the statement $\forall x\:P(x)\vee q$ means 
+  $(\forall x\:P(x))\vee q$ rather than $\forall x\:(P(x)\vee q)$.
+
+\subsection{Logical Equivalences involving Quantifiers}
+
+When two compound propositions such as $\neg p\wedge \neg q$ and 
+$\neg(p\vee q)$ are equivalent, they have the same truth value 
+regardless of the truth assignment of $p$ and $q$. 
+If $\phi$ and $\psi$ are propositions involving the predicates $P,Q,R,\dots$ and quantifiers, 
+we say $\phi\equiv\psi$ if the two propositions have the same truth value 
+independent of the predicates $P,Q,R,\dots$ (and their domains).
+
+\example (\textbf{DeMorgan's Laws for Quantifiers}) The following logical equivalences hold:
+\begin{enumerate}
+  \item $\neg\forall x\:P(x)\equiv \exists x\:\neg P(x)$
+  \item $\neg\exists x\:P(x)\equiv \forall x\:\neg P(x)$
+\end{enumerate}
+\begin{proof}
+  We'll prove the first equivalence - $\neg\forall x\:P(x)\equiv \exists x\:\neg P(x)$ 
+  - the second is left as an exercise. 
+  The comment at the start of this section (3.4) means that 
+  we can't assume anything about the predicate $P$.
+
+  Let $\phi=\neg\forall x\:P(x)$ and $\psi=\exists x\:\neg P(x)$.
+  To prove $\phi\equiv\psi$, it suffices to prove that
+  $\phi\leftrightarrow\psi$ is a tautology. 
+  Note $\phi\leftrightarrow\psi\equiv(\phi\rightarrow\psi)\wedge(\psi\rightarrow\phi)$,
+  which is a tautology if and only if both $\phi\rightarrow\psi$ and $\psi\rightarrow\phi$
+  are tautologies.
+
+  Proof that $\phi\rightarrow\psi$ is a tautology: If $\phi$ is false,
+  $\phi\rightarrow\psi$ is true, so we need only consider the case where $\phi$ is true.
+  If $\phi$ is true, then $\forall x\:P(x)$ is false, so there exists a counterexample -
+  there exists an $x$ such that $P(x)$ is false. But then there exists an $x$ such that
+  $\neg P(x)$ is true, so $\psi=\exists x\:\neg P(x)$ is true. Thus $\phi\rightarrow\psi$.
+
+  Proof that $\psi\rightarrow\phi$ is a tautology: If $\psi$ is false,
+  $\psi\rightarrow\phi$, so we may assume $\psi$ is true.
+  Then, there exists an $x$ such that $\neg P(x)$ is true, so there exists
+  a counterexample to the proposition $\forall x\:P(x)$. Thus $\forall x\:P(x)$ is false,
+  so $\phi=\neg\forall x\:P(x)$ is true. Thus $\psi\rightarrow\phi$.
+\end{proof}
+
+\example Show that $\forall x\:(P(x)\wedge Q(x))\equiv (\forall x\:P(x))\wedge(\forall x\:Q(x))$
+  assuming $P$ and $Q$ have the same domain.
+  
+\example Negate the statements $\forall x\:(x^2>x)$ and $\exists x\:(x^2=2)$.
